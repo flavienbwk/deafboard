@@ -43,8 +43,22 @@ class Home extends Component {
         super(props);
         this.state = {
             client_messages: [],
-            answer_messages: []
+            answer_messages: [],
+            speaking: false,
+            listening: false
         }
+    }
+
+    setSpeaking = (boolean) => {
+        this.setState({
+            speaking: boolean
+        })
+    }
+
+    setListening = (boolean) => {
+        this.setState({
+            listening: boolean
+        })
     }
 
     addClientMessage = (message) => {
@@ -81,6 +95,8 @@ class Home extends Component {
                                 </Col>
                                 <Col lg={{ span: 12 }} className="borders-no-top borders-no-bottom">
                                     <ButtonsBox
+                                        speaking={this.state.speaking}
+                                        listening={this.state.listening}
                                         onAddAnswerMessage={this.addAnswerMessage}
                                     />
                                 </Col>

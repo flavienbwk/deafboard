@@ -33,13 +33,34 @@ export class ButtonsBox extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            speaking: props.speaking,
+            listening: props.listening,
             onAddAnswerMessage: props.onAddAnswerMessage
         }
     }
 
-    addMessage = (e) => {
-        const message = e.target.innerHTML
+    addMessage = (message) => {
         this.state.onAddAnswerMessage(message)
+    }
+
+    addBtnMessage = (e) => {
+        const message = e.target.innerHTML
+        this.addMessage(message)
+    }
+
+    onEnterAddCustomMessage = (e) => {
+        if (e.key === 'Enter') {
+            this.addCustomMessage()
+        }
+    }
+
+    addCustomMessage = () => {
+        if (this.state.speaking === false) {
+            const message = this.talkinput.value
+            if (message.length) {
+                this.addMessage(message)
+            }
+        }
     }
 
     render() {
@@ -48,20 +69,20 @@ export class ButtonsBox extends Component {
                 <Container>
                     <Row className="padding-bottom">
                         <Col lg={{ span: 12 }} className="center">
-                            <Button className="answer_button" onClick={ this.addMessage }>Hello</Button>
-                            <Button className="answer_button" onClick={ this.addMessage }>Thank you</Button>
-                            <Button className="answer_button" onClick={ this.addMessage }>Yes</Button>
-                            <Button className="answer_button" onClick={ this.addMessage }>No</Button>
-                            <Button className="answer_button" onClick={ this.addMessage }>Have a nice day !</Button>
-                            <Button className="answer_button" onClick={ this.addMessage }>Will you pay by card or cash ?</Button>
-                            <Button className="answer_button" onClick={ this.addMessage }>Would you like a receipt ?</Button>
-                            <Button className="answer_button" onClick={ this.addMessage }>Have you the loyalty card ?</Button>
+                            <Button className="answer_button" onClick={ this.addBtnMessage } disabled={ this.state.speaking }>Hello</Button>
+                            <Button className="answer_button" onClick={ this.addBtnMessage } disabled={ this.state.speaking }>Thank you</Button>
+                            <Button className="answer_button" onClick={ this.addBtnMessage } disabled={ this.state.speaking }>Yes</Button>
+                            <Button className="answer_button" onClick={ this.addBtnMessage } disabled={ this.state.speaking }>No</Button>
+                            <Button className="answer_button" onClick={ this.addBtnMessage } disabled={ this.state.speaking }>Have a nice day !</Button>
+                            <Button className="answer_button" onClick={ this.addBtnMessage } disabled={ this.state.speaking }>Will you pay by card or cash ?</Button>
+                            <Button className="answer_button" onClick={ this.addBtnMessage } disabled={ this.state.speaking }>Would you like a receipt ?</Button>
+                            <Button className="answer_button" onClick={ this.addBtnMessage } disabled={ this.state.speaking }>Have you the loyalty card ?</Button>
                         </Col>
                         <Col lg={{ span: 9 }} className="center">
-                            <input placeholder="Say something..." type="text" className="form-control"/>
+                            <input ref={ref => this.talkinput = ref} placeholder="Say something..." type="text" className="form-control" onKeyDown={this.onEnterAddCustomMessage} autoFocus/>
                         </Col>
                         <Col lg={{ span: 3 }} className="center">
-                            <Button style={{ width: "100%" }}>Talk</Button>
+                            <Button style={{ width: "100%" }} disabled={ this.state.speaking } onClick={this.addCustomMessage} >Talk</Button>
                         </Col>
                     </Row>
                 </Container>
