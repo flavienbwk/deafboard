@@ -35,7 +35,6 @@ export class Sentence extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            time: props.time,
             type: props.type,
             time_ago: this.getTimeAgo(props.time),
             message_color: this.getMessageColor(props.time),
@@ -91,10 +90,10 @@ export class Sentence extends Component {
 
     renderType()
     {
-        if (this.state.type === "answer") {
-            return <Badge class="badge badge-info">Button answer</Badge>
-        } else if (this.state.type === "sign") {
-            return <Badge class="badge badge-danger">Sign answer</Badge>
+        if (this.props.type === "button") {
+            return <Badge className="badge badge-info">Button answer</Badge>
+        } else if (this.props.type === "sign") {
+            return <Badge className="badge badge-danger">Sign answer</Badge>
         } else {
             return <></>
         }

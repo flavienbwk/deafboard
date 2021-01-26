@@ -70,6 +70,7 @@ export class AnswersBox extends Component {
                                         this.props.messages.map((value, index) => {
                                             return <Sentence
                                                 key={index}
+                                                type={value.type}
                                                 message={value.message}
                                                 time={value.time}
                                             />

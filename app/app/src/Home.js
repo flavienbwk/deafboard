@@ -59,6 +59,7 @@ class Home extends Component {
     addAnswerMessage = (message) => {
         this.setState({
             answer_messages: [{
+                type: "button",
                 message: message,
                 time: new Date()
             }].concat(this.state.answer_messages)
@@ -80,7 +81,6 @@ class Home extends Component {
                                 </Col>
                                 <Col lg={{ span: 12 }} className="borders-no-top borders-no-bottom">
                                     <ButtonsBox
-                                        onAddClientMessage={this.addClientMessage}
                                         onAddAnswerMessage={this.addAnswerMessage}
                                     />
                                 </Col>

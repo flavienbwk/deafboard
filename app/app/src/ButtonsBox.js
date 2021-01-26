@@ -33,23 +33,13 @@ export class ButtonsBox extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            onAddClientMessage: props.onAddClientMessage,
             onAddAnswerMessage: props.onAddAnswerMessage
         }
-    }
-    
-    addClientMessage = (message) => {
-        this.state.onAddClientMessage(message)
-    }
-
-    addAnswerMessage = (message) => {
-        this.state.onAddAnswerMessage(message)
     }
 
     addMessage = (e) => {
         const message = e.target.innerHTML
-        this.addClientMessage(message)
-        this.addAnswerMessage(message)
+        this.state.onAddAnswerMessage(message)
     }
 
     render() {
