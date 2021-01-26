@@ -3,7 +3,6 @@ import { Container, Row, Col, Image } from 'react-bootstrap'
 import styled from 'styled-components'
 import Sentence from './Sentence';
 import SpeechRecognition from 'react-speech-recognition'
-import { VolumeUpFill, VolumeUp } from 'react-bootstrap-icons';
 
 const Styles = styled.div`
     .padding-bottom {

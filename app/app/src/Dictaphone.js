@@ -7,7 +7,7 @@ const Dictaphone = (props) => {
         return null
     }
 
-    if (finalTranscript || finalTranscript != "") {
+    if (finalTranscript || finalTranscript !== "") {
         props.onAddClientMessage(finalTranscript);
         resetTranscript();
     }

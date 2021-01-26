@@ -60,7 +60,7 @@ export class AnswersBox extends Component {
                             }}/>
                             {
                                 (this.state.webcamWorks === false)
-                                ? <Alert className="alert alert-warning">No webcam was detected {String(this.state.webcamWorks)}, can't use sign recognition.</Alert> : <></>
+                                ? <Alert className="alert alert-warning">No webcam was detected, can't use sign recognition.</Alert> : <></>
                             }
                             <br/>
                             <div>
