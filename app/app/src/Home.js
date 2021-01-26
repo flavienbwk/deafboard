@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import TranscriptionBox from './TranscriptionBox';
 import ButtonsBox from './ButtonsBox';
 import AnswersBox from './AnswersBox';
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
+import Dictaphone from './Dictaphone';
 
 const Styles = styled.div`
     .paddind-bottom {
@@ -48,14 +48,6 @@ class Home extends Component {
             speaking: false,
             listening: false
         }
-        this.initVoiceTranscription()
-    }
-
-    initVoiceTranscription() {
-        SpeechRecognition.startListening({
-            continuous: true,
-            language: 'en-US'
-        })
     }
 
     setSpeaking = (boolean) => {
@@ -90,9 +82,6 @@ class Home extends Component {
     }
 
     render() {
-        if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
-            return null
-        }
         return (
             <Styles>
                 <Container fluid>
@@ -104,6 +93,7 @@ class Home extends Component {
                                     overflowY: "scroll"
                                 }}>
                                     <TranscriptionBox messages={this.state.client_messages}/>
+                                    <Dictaphone onAddClientMessage={this.addClientMessage} />
                                 </Col>
                                 <Col lg={{ span: 12 }} className="borders-no-top borders-no-bottom">
                                     <ButtonsBox
