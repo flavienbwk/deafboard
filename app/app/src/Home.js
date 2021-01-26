@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import TranscriptionBox from './TranscriptionBox';
 import ButtonsBox from './ButtonsBox';
 import AnswersBox from './AnswersBox';
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 
 const Styles = styled.div`
     .paddind-bottom {
@@ -47,6 +48,14 @@ class Home extends Component {
             speaking: false,
             listening: false
         }
+        this.initVoiceTranscription()
+    }
+
+    initVoiceTranscription() {
+        SpeechRecognition.startListening({
+            continuous: true,
+            language: 'en-US'
+        })
     }
 
     setSpeaking = (boolean) => {
@@ -81,6 +90,9 @@ class Home extends Component {
     }
 
     render() {
+        if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
+            return null
+        }
         return (
             <Styles>
                 <Container fluid>

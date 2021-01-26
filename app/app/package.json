@@ -17,7 +17,8 @@
     "react-loader-spinner": "3.1.14",
     "react-click-outsider": "^1.1.1",
     "react-bootstrap-icons": "1.0.1-alpha3",
-    "react-webcam": "5.2.2"
+    "react-webcam": "5.2.2",
+    "react-speech-recognition": "3.6.0"
   },
   "scripts": {
     "start": "/app/node_modules/react-scripts/bin/react-scripts.js start",

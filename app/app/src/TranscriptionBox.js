@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import styled from 'styled-components'
 import Sentence from './Sentence';
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 
 const Styles = styled.div`
     .padding-bottom {
@@ -26,6 +27,9 @@ const Styles = styled.div`
 export class TranscriptionBox extends Component {
 
     render() {
+        if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
+            return <p>Please enable your microphone. Speech recognition disabled.</p>
+        }
         return (
             <Styles>
                 <Container>
