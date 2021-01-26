@@ -47,6 +47,24 @@ class Home extends Component {
         }
     }
 
+    addClientMessage = (message) => {
+        this.setState({
+            client_messages: [{
+                message: message,
+                time: new Date()
+            }].concat(this.state.client_messages)
+        })
+    }
+
+    addAnswerMessage = (message) => {
+        this.setState({
+            answer_messages: [{
+                message: message,
+                time: new Date()
+            }].concat(this.state.answer_messages)
+        })
+    }
+
     render() {
         return (
             <Styles>
@@ -61,12 +79,18 @@ class Home extends Component {
                                     <TranscriptionBox messages={this.state.client_messages}/>
                                 </Col>
                                 <Col lg={{ span: 12 }} className="borders-no-top borders-no-bottom">
-                                    <ButtonsBox />
+                                    <ButtonsBox
+                                        onAddClientMessage={this.addClientMessage}
+                                        onAddAnswerMessage={this.addAnswerMessage}
+                                    />
                                 </Col>
                             </Row>
                         </Col>
-                        <Col lg={{ span: 4 }} className="borders">
-                            <AnswersBox messages={this.state.answer_messages} />
+                        <Col lg={{ span: 4 }} className="borders" style={{
+                            height: "90vh",
+                            overflowY: "scroll"
+                        }}>
+                            <AnswersBox messages={this.state.answer_messages}/>
                         </Col>
                     </Row>
                 </Container>

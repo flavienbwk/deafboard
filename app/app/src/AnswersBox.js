@@ -29,7 +29,6 @@ export class AnswersBox extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            messages: props.messages,
             webcamWorks: false
         }
     }
@@ -64,18 +63,21 @@ export class AnswersBox extends Component {
                                 ? <Alert className="alert alert-warning">No webcam was detected {String(this.state.webcamWorks)}, can't use sign recognition.</Alert> : <></>
                             }
                             <br/>
-                            {
-                                (this.state.messages && this.state.messages.length)
-                                ?
-                                    this.state.messages.map((value, _) => {
-                                        return <Sentence
-                                            message={value.message}
-                                            time={value.time}
-                                        />
-                                    })
-                                :
-                                    <></>
-                            }
+                            <div>
+                                {
+                                    (this.props.messages && this.props.messages.length)
+                                    ?
+                                        this.props.messages.map((value, index) => {
+                                            return <Sentence
+                                                key={index}
+                                                message={value.message}
+                                                time={value.time}
+                                            />
+                                        })
+                                    :
+                                        <></>
+                                }
+                            </div>
                         </Col>
                     </Row>
                 </Container>

@@ -35,7 +35,6 @@ export class Sentence extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            message: props.message,
             time: props.time,
             type: props.type,
             time_ago: this.getTimeAgo(props.time),
@@ -103,13 +102,13 @@ export class Sentence extends Component {
 
     componentDidMount() {
         this.interval = setInterval(() => {
-            const timeAgoInSeconds = Math.floor((new Date() - new Date(this.state.time)) / 1000);
-            const time_ago = this.getTimeAgo(this.state.time)
-            const message_color = this.getMessageColor(this.state.time)
+            const timeAgoInSeconds = Math.floor((new Date() - new Date(this.props.time)) / 1000);
+            const time_ago = this.getTimeAgo(this.props.time)
+            const message_color = this.getMessageColor(this.props.time)
             this.setState({
                 time_ago: time_ago,
                 message_color: message_color,
-                render: (timeAgoInSeconds > 90) ? false : true
+                render: (timeAgoInSeconds > 120) ? false : true
             })
         }, 1000);
     }
@@ -124,12 +123,12 @@ export class Sentence extends Component {
             <Styles>
                 <Container>
                     <Row className="padding-bottom">
-                        <Col lg={{ span: 3 }} className="center timestamp">
+                        <Col lg={{ span: 3 }} className="timestamp">
                             <p>{ this.state.time_ago }</p>
                         </Col>
                         <Col lg={{ span: 9 }} className="left border-left">
                             { this.renderType() }
-                            <p style={{ color: this.state.message_color }}>{ this.state.message }</p>
+                            <p style={{ color: this.state.message_color }}>{ this.props.message }</p>
                         </Col>
                     </Row>
                 </Container>

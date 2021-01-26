@@ -25,13 +25,6 @@ const Styles = styled.div`
 
 export class TranscriptionBox extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            messages: props.messages
-        }
-    }
-
     render() {
         return (
             <Styles>
@@ -41,10 +34,11 @@ export class TranscriptionBox extends Component {
                             <b><p className="left">Client's speech</p></b>
                             <hr/>
                             {
-                                (this.state.messages && this.state.messages.length)
+                                (this.props.messages && this.props.messages.length)
                                 ?
-                                    this.state.messages.map((value, _) => {
+                                    this.props.messages.map((value, index) => {
                                         return <Sentence
+                                            key={index}
                                             message={value.message}
                                             time={value.time}
                                         />
