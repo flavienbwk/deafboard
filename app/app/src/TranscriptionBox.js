@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col, Image } from 'react-bootstrap'
 import styled from 'styled-components'
 import Sentence from './Sentence';
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
+import SpeechRecognition from 'react-speech-recognition'
+import { VolumeUpFill, VolumeUp } from 'react-bootstrap-icons';
 
 const Styles = styled.div`
     .padding-bottom {
@@ -35,7 +36,9 @@ export class TranscriptionBox extends Component {
                 <Container>
                     <Row className="padding-bottom">
                         <Col lg={{ span: 12 }} className="center">
-                            <b><p className="left">Client's speech</p></b>
+                            <b>
+                                <p className="left">Client's speech <Image hidden={!this.props.isClientTalking} height="20" src="https://im6.ezgif.com/tmp/ezgif-6-6ecd188e3c34.gif" /></p>
+                            </b>
                             <hr/>
                             {
                                 (this.props.messages && this.props.messages.length)

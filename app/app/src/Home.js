@@ -46,7 +46,8 @@ class Home extends Component {
             client_messages: [],
             answer_messages: [],
             speaking: false,
-            listening: false
+            listening: false,
+            isClientTalking: false
         }
     }
 
@@ -81,6 +82,12 @@ class Home extends Component {
         })
     }
 
+    setClientTalking = (status) => {
+        if (this.state.isClientTalking == status)
+            return;
+        this.setState({isClientTalking: status})
+    }
+
     render() {
         return (
             <Styles>
@@ -92,8 +99,11 @@ class Home extends Component {
                                     height: "40vh",
                                     overflowY: "scroll"
                                 }}>
-                                    <TranscriptionBox messages={this.state.client_messages}/>
-                                    <Dictaphone onAddClientMessage={this.addClientMessage} />
+                                    <TranscriptionBox messages={this.state.client_messages} isClientTalking={this.state.isClientTalking} />
+                                    <Dictaphone
+                                        onAddClientMessage={this.addClientMessage}
+                                        onClientTalking={this.setClientTalking}
+                                    />
                                 </Col>
                                 <Col lg={{ span: 12 }} className="borders-no-top borders-no-bottom">
                                     <ButtonsBox

@@ -1,8 +1,7 @@
-import React from 'react'
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 
 const Dictaphone = (props) => {
-    const { finalTranscript, resetTranscript } = useSpeechRecognition()
+    const { finalTranscript, transcript, resetTranscript } = useSpeechRecognition()
 
     if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
         return null
@@ -21,6 +20,8 @@ const Dictaphone = (props) => {
     }
 
     initVoiceTranscription();
+
+    props.onClientTalking(Boolean(transcript));
   
     return null;
 }
