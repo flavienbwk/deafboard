@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import styled from 'styled-components'
 import Sentence from './Sentence';
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
+import SpeechRecognition from 'react-speech-recognition'
 
 const Styles = styled.div`
     .padding-bottom {
