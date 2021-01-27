@@ -86,7 +86,7 @@ class Home extends Component {
     }
 
     setClientTalking = (status) => {
-        if (this.state.isClientTalking == status)
+        if (this.state.isClientTalking === status)
             return;
         this.setState({isClientTalking: status})
     }
@@ -126,7 +126,7 @@ class Home extends Component {
                                 <Speech
                                     text={this.state.answer_messages.length > 0 ? this.state.answer_messages[0].message : ""}
                                     textAsButton={true}
-                                    lang="en-US"
+                                    lang="en-GB"
                                 />
                             </div>
                         </Col>
