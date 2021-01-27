@@ -599,12 +599,28 @@ body.mobile-nav-active #mobile-nav-toggle {
 /* ==================================================
   Welcome Styling
   ================================================== */
-.welcome {
-  color: #fff;
-  height: 800px;
-  overflow: hidden;
-  padding-top: 85px;
-  background: url("../img/parallax-bg.jpg") center top no-repeat;
+
+
+@media screen and (min-width: 701px) {
+  .welcome {
+    color: #fff;
+    height: 600px;
+    overflow: hidden;
+    padding-top: 85px;
+    background-image: url("../img/langue-signes.jpeg");
+    background-size: cover;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .welcome {
+    color: #fff;
+    height: 1000px;
+    overflow: hidden;
+    padding-top: 85px;
+    background-image: url("../img/langue-signes.jpeg");
+    background-size: cover;
+  }
 }
 
 .welcome h2 {
@@ -615,6 +631,21 @@ body.mobile-nav-active #mobile-nav-toggle {
 .welcome p {
   color: #fff;
   margin-bottom: 45px;
+}
+
+
+@media screen and (min-width: 601px) {
+  .platform img {
+    height: 425px;
+    border-radius: 5px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .platform img {
+    height: 250px;
+    border-radius: 5px;
+  }
 }
 
 /* ==================================================
