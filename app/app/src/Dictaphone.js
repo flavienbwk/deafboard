@@ -1,4 +1,4 @@
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
 const Dictaphone = (props) => {
     const { finalTranscript, transcript, resetTranscript } = useSpeechRecognition()
@@ -8,7 +8,10 @@ const Dictaphone = (props) => {
     }
 
     if (finalTranscript || finalTranscript !== "") {
-        props.onAddClientMessage(finalTranscript);
+        var message = finalTranscript + "";
+
+        props.onAddClientMessage(message);
+
         resetTranscript();
     }
     
@@ -22,7 +25,7 @@ const Dictaphone = (props) => {
     initVoiceTranscription();
 
     props.onClientTalking(Boolean(transcript));
-  
+
     return null;
 }
 

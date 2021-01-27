@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Container, Row, Col } from 'react-bootstrap';
+import Speech from 'react-speech';
 import styled from 'styled-components';
 import TranscriptionBox from './TranscriptionBox';
 import ButtonsBox from './ButtonsBox';
@@ -47,7 +48,8 @@ class Home extends Component {
             answer_messages: [],
             speaking: false,
             listening: false,
-            isClientTalking: false
+            isClientTalking: false,
+            playSound: false
         }
     }
 
@@ -79,7 +81,8 @@ class Home extends Component {
                 message: message,
                 time: new Date()
             }].concat(this.state.answer_messages)
-        })
+        });
+        this.setState({playSound: true});
     }
 
     setClientTalking = (status) => {
@@ -119,6 +122,13 @@ class Home extends Component {
                             overflowY: "scroll"
                         }}>
                             <AnswersBox messages={this.state.answer_messages}/>
+                            <div hidden>
+                                <Speech
+                                    text={this.state.answer_messages.length > 0 ? this.state.answer_messages[0].message : ""}
+                                    textAsButton={true}
+                                    lang="en-US"
+                                />
+                            </div>
                         </Col>
                     </Row>
                 </Container>
@@ -130,6 +140,12 @@ class Home extends Component {
         document.title = "Home - DeafBoard";
     }
 
+    componentDidUpdate() {
+        if (this.state.playSound) {
+            document.getElementsByClassName("rs-play")[0].click();
+            this.setState({playSound: false});
+        }
+    }
 }
 
 export default Home;
