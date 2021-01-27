@@ -5,6 +5,32 @@
 * License: https://bootstrapmade.com/license/
 */
 
+@media screen and (min-width: 601px) {
+  .society-name {
+    font-size:5vw;
+  }
+}
+@media screen and (max-width: 600px) {
+  .society-name {
+    font-size:10vw;
+    margin-bottom: 20px;
+  }
+}
+@media screen and (min-width: 601px) {
+  .slogan-name {
+    font-size:2vw;
+    position: relative;
+    top: 30px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .slogan-name {
+    font-size:5vw;
+    position: relative;
+    margin-top: 30px;
+  }
+}
+
 .typewriter h1 {
   overflow: hidden; /* Ensures the content is not revealed until the animation */
   border-right: .15em solid white; /* The typwriter cursor */
@@ -612,9 +638,9 @@ body.mobile-nav-active #mobile-nav-toggle {
   vertical-align: middle;
 }
 
-.feature-col > div > div:last-child {
+/* .feature-col > div > div:last-child {
   padding-left: 20px;
-}
+} */
 
 .feature-col .feature-icon {
   width: 70px;
@@ -623,6 +649,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   background: #199EB8;
   color: #fff;
   font-size: 24px;
+  vertical-align: center;
   text-align: center;
   line-height: 70px;
   border-radius: 50%;
