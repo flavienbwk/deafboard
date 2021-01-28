@@ -17,3 +17,5 @@ Run the platform with Docker by executing :
 ```bash
 docker-compose up
 ```
+
+:information_source: This web application is only compatible with Chrome for the native speech recognition Chrome API.
